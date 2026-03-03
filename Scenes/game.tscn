@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://b3ijv3wopfqp6"]
+
+[ext_resource type="Script" uid="uid://7tcxyr7kgctx" path="res://Scripts/game.gd" id="1_ebmjs"]
+
+[sub_resource type="Environment" id="Environment_ebmjs"]
+background_mode = 3
+glow_intensity = 8.0
+glow_strength = 1.2
+glow_bloom = 0.18
+glow_blend_mode = 2
+glow_hdr_threshold = 4.0
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 70.95
+
+[node name="Game" type="Node" unique_id=2021720624]
+script = ExtResource("1_ebmjs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=606856578]
+environment = SubResource("Environment_ebmjs")

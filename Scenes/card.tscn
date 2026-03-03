@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d24dn1cdkdas8"]
+[gd_scene format=3 uid="uid://d24dn1cdkdas8"]
 
 [ext_resource type="Script" uid="uid://cbrqyrmlcorbk" path="res://Scripts/card.gd" id="1_0qqmn"]
 [ext_resource type="Shader" uid="uid://dp8xiuf6b4b76" path="res://Shaders/discard.gdshader" id="2_eumee"]
@@ -27,7 +27,7 @@ shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.02999999932944
 shader_parameter/burn_color = Color(0.7764706, 0.39607844, 0, 1)
 
-[node name="Card" type="Control"]
+[node name="Card" type="Control" unique_id=722032154]
 custom_minimum_size = Vector2(128, 192)
 layout_mode = 3
 anchors_preset = 0
@@ -41,27 +41,28 @@ mouse_default_cursor_shape = 2
 script = ExtResource("1_0qqmn")
 metadata/_edit_vertical_guides_ = [-56.0]
 
-[node name="UseCardArea" type="Area2D" parent="."]
+[node name="UseCardArea" type="Area2D" parent="." unique_id=2021538158]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UseCardArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UseCardArea" unique_id=538637593]
 position = Vector2(64, 96)
 shape = SubResource("RectangleShape2D_brehn")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=61442000]
 material = SubResource("ShaderMaterial_e6po8")
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 192.0
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2125622518]
 disable_3d = true
 transparent_bg = true
 handle_input_locally = false
+snap_2d_transforms_to_pixel = true
 size = Vector2i(128, 192)
 render_target_update_mode = 4
 
-[node name="CardTexture" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+[node name="CardTexture" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=277390911]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -76,7 +77,7 @@ grow_vertical = 2
 pivot_offset = Vector2(64, 96)
 texture = ExtResource("5_e6po8")
 
-[node name="Title" type="Label" parent="SubViewportContainer/SubViewport/CardTexture"]
+[node name="Title" type="Label" parent="SubViewportContainer/SubViewport/CardTexture" unique_id=1613901924]
 layout_mode = 0
 offset_left = 11.0
 offset_top = 19.0
@@ -88,7 +89,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="label" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CardTexture"]
+[node name="label" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CardTexture" unique_id=1312563055]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

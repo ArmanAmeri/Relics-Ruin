@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://b3nv3gmdnrjt8"]
+[gd_scene format=3 uid="uid://b3nv3gmdnrjt8"]
 
 [ext_resource type="Script" uid="uid://dmcq8wurk6tv1" path="res://Scripts/use_card_area.gd" id="1_2jd1k"]
 [ext_resource type="Script" uid="uid://bty4xp7dsb4hr" path="res://Scripts/hand.gd" id="3_mgabx"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cldxangsdrwi1" path="res://Scripts/deck2.gd" id="6_te6kr"]
 [ext_resource type="Script" uid="uid://cnwuqsy0stipk" path="res://Scripts/rarityManager.gd" id="6_ykntj"]
 [ext_resource type="Script" uid="uid://f2c5cs3wjerb" path="res://Scripts/pot.gd" id="8_ocltp"]
+[ext_resource type="FontFile" uid="uid://2gi3cn1celf" path="res://Resources/BoldPixels.ttf" id="8_ukj3l"]
 [ext_resource type="Script" uid="uid://duiikla1kbg35" path="res://Scripts/burn.gd" id="9_pr37v"]
 [ext_resource type="Script" uid="uid://brhq82awohop1" path="res://Scripts/escape.gd" id="10_76m13"]
 [ext_resource type="Script" uid="uid://415rovy772eo" path="res://Scripts/fate_decision.gd" id="10_lij0d"]
@@ -63,7 +64,7 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_ukj3l"]
 colors = PackedColorArray(1, 1, 1, 0.47058824, 1, 1, 1, 0)
 
-[node name="Chamber" type="Control"]
+[node name="Chamber" type="Control" unique_id=1672932270]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,7 +73,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Panel" type="Panel" parent="." unique_id=82420757]
 modulate = Color(1, 1, 0, 0.403922)
 layout_mode = 1
 anchors_preset = 2
@@ -83,7 +84,7 @@ offset_right = 576.0
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="UseCardArea" type="Panel" parent="."]
+[node name="UseCardArea" type="Panel" parent="." unique_id=522315110]
 visible = false
 layout_mode = 1
 anchors_preset = -1
@@ -93,7 +94,7 @@ grow_horizontal = 2
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_prqlx")
 
-[node name="Label" type="Label" parent="UseCardArea"]
+[node name="Label" type="Label" parent="UseCardArea" unique_id=120795705]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -108,7 +109,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Destroy Area"
 
-[node name="Hand" type="Control" parent="."]
+[node name="Hand" type="Control" parent="." unique_id=1120043384]
 custom_minimum_size = Vector2(512, 192)
 layout_mode = 1
 anchors_preset = 7
@@ -127,7 +128,7 @@ script = ExtResource("3_mgabx")
 hand_curve = SubResource("Curve_te6kr")
 rotation_curve = SubResource("Curve_ykntj")
 
-[node name="Hand2" type="Control" parent="."]
+[node name="Hand2" type="Control" parent="." unique_id=1307564135]
 visible = false
 layout_mode = 1
 anchor_top = 0.7
@@ -135,7 +136,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource("4_iwt3f")
 
-[node name="Deck" type="Control" parent="."]
+[node name="Deck" type="Control" parent="." unique_id=1057996584]
 anchors_preset = 0
 offset_left = 288.0
 offset_top = 200.0
@@ -145,7 +146,7 @@ mouse_filter = 2
 script = ExtResource("3_prqlx")
 rarityM = SubResource("Resource_ykntj")
 
-[node name="draw" type="Button" parent="."]
+[node name="draw" type="Button" parent="." unique_id=582082760]
 layout_mode = 0
 offset_left = 35.0
 offset_top = 213.0
@@ -153,7 +154,7 @@ offset_right = 83.0
 offset_bottom = 244.0
 text = "draw"
 
-[node name="Deck2" type="Control" parent="."]
+[node name="Deck2" type="Control" parent="." unique_id=1027015747]
 visible = false
 anchors_preset = 0
 offset_left = 257.0
@@ -162,22 +163,22 @@ offset_right = 297.0
 offset_bottom = 345.0
 script = ExtResource("6_te6kr")
 
-[node name="HoldingCard" type="Control" parent="."]
+[node name="HoldingCard" type="Control" parent="." unique_id=1762002008]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 1
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." unique_id=300032626]
 visible = false
 position = Vector2(288, 701.41)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=360032255]
 position = Vector2(0, -0.40997314)
 shape = SubResource("RectangleShape2D_te6kr")
 disabled = true
 
-[node name="Pot" type="Label" parent="."]
+[node name="Pot" type="Label" parent="." unique_id=1367310018]
 custom_minimum_size = Vector2(300, 60)
 layout_mode = 1
 anchors_preset = 7
@@ -195,7 +196,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("8_ocltp")
 
-[node name="Burn" type="Control" parent="."]
+[node name="Burn" type="Control" parent="." unique_id=17992490]
 anchors_preset = 0
 offset_left = 498.0
 offset_top = 40.0
@@ -203,7 +204,7 @@ offset_right = 538.0
 offset_bottom = 80.0
 script = ExtResource("9_pr37v")
 
-[node name="BurnCostLabel" type="Label" parent="Burn"]
+[node name="BurnCostLabel" type="Label" parent="Burn" unique_id=163876525]
 layout_mode = 0
 offset_left = -24.0
 offset_top = 42.0
@@ -214,17 +215,17 @@ text = "Cost: 100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BurnLabel" type="Label" parent="Burn"]
+[node name="BurnLabel" type="Label" parent="Burn" unique_id=1877907665]
 layout_mode = 0
-offset_left = -35.0
-offset_top = -1.0
-offset_right = 61.0
-offset_bottom = 31.0
-theme_override_fonts/font = ExtResource("14_nbaa2")
-theme_override_font_sizes/font_size = 32
+offset_left = -45.0
+offset_top = -9.0
+offset_right = 64.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("8_ukj3l")
+theme_override_font_sizes/font_size = 48
 text = "BURN"
 
-[node name="FateDecision" type="Panel" parent="."]
+[node name="FateDecision" type="Panel" parent="." unique_id=177030610]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -234,7 +235,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("10_lij0d")
 
-[node name="FlowContainer" type="FlowContainer" parent="FateDecision"]
+[node name="FlowContainer" type="FlowContainer" parent="FateDecision" unique_id=2042201950]
 custom_minimum_size = Vector2(500, 200)
 layout_mode = 1
 anchors_preset = 8
@@ -249,7 +250,7 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Escape" type="Control" parent="."]
+[node name="Escape" type="Control" parent="." unique_id=446006600]
 layout_mode = 1
 anchors_preset = 0
 offset_left = 5.0
@@ -258,7 +259,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("10_76m13")
 
-[node name="EscapeButton" type="Button" parent="Escape"]
+[node name="EscapeButton" type="Button" parent="Escape" unique_id=1159186364]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.22900002
@@ -267,10 +268,11 @@ offset_left = 13.0
 offset_top = 16.0
 offset_right = 127.985
 offset_bottom = 60.996
+theme_override_fonts/font = ExtResource("8_ukj3l")
 theme_override_font_sizes/font_size = 32
 text = "ESCAPE"
 
-[node name="EscapeCostLabel" type="Label" parent="Escape"]
+[node name="EscapeCostLabel" type="Label" parent="Escape" unique_id=1177033962]
 layout_mode = 0
 offset_left = 39.0
 offset_top = 72.0
@@ -281,7 +283,7 @@ text = "Cost: 100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CardZoom" type="Control" parent="."]
+[node name="CardZoom" type="Control" parent="." unique_id=1872077286]
 visible = false
 z_index = 100
 layout_mode = 1
@@ -292,7 +294,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("11_76m13")
 
-[node name="Background" type="Button" parent="CardZoom"]
+[node name="Background" type="Button" parent="CardZoom" unique_id=452576747]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -300,7 +302,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CardPlacement" type="Panel" parent="CardZoom"]
+[node name="CardPlacement" type="Panel" parent="CardZoom" unique_id=962400194]
 visible = false
 z_index = 20
 layout_mode = 1
@@ -316,7 +318,8 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="UsageOverlay" type="Control" parent="."]
+[node name="UsageOverlay" type="Control" parent="." unique_id=1210783338]
+visible = false
 z_index = 100
 layout_mode = 1
 anchors_preset = 15
@@ -327,7 +330,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("12_cr50s")
 
-[node name="Background" type="Panel" parent="UsageOverlay"]
+[node name="Background" type="Panel" parent="UsageOverlay" unique_id=1141946931]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -337,7 +340,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cr50s")
 
-[node name="Use" type="Label" parent="UsageOverlay"]
+[node name="Use" type="Label" parent="UsageOverlay" unique_id=1998337314]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 5
@@ -354,21 +357,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("1_2jd1k")
 
-[node name="UsePos" type="Marker2D" parent="UsageOverlay/Use"]
+[node name="UsePos" type="Marker2D" parent="UsageOverlay/Use" unique_id=635884715]
 visible = false
 position = Vector2(36, 20)
 
-[node name="Area2D" type="Area2D" parent="UsageOverlay/Use"]
+[node name="Area2D" type="Area2D" parent="UsageOverlay/Use" unique_id=794216318]
 visible = false
 collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UsageOverlay/Use/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UsageOverlay/Use/Area2D" unique_id=1122570018]
 position = Vector2(36, 25)
 shape = SubResource("RectangleShape2D_vhq8i")
 
-[node name="UseParticles" type="CPUParticles2D" parent="UsageOverlay/Use"]
+[node name="UseParticles" type="CPUParticles2D" parent="UsageOverlay/Use" unique_id=1194599316]
 position = Vector2(34, -6)
 amount = 500
+lifetime = 0.7
 emission_shape = 4
 emission_points = PackedVector2Array(0, 0, 0, 0)
 emission_colors = PackedColorArray(1, 1, 0.62352943, 0.50980395, 0, 1, 0.62352943, 0.50980395)
@@ -384,7 +388,7 @@ angle_max = 100.0
 scale_amount_max = 10.0
 color_ramp = SubResource("Gradient_nbaa2")
 
-[node name="Burn" type="Label" parent="UsageOverlay"]
+[node name="Burn" type="Label" parent="UsageOverlay" unique_id=426319891]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 6
@@ -404,18 +408,18 @@ text = "BURN"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BurnPos" type="Marker2D" parent="UsageOverlay/Burn"]
+[node name="BurnPos" type="Marker2D" parent="UsageOverlay/Burn" unique_id=2070586145]
 visible = false
 position = Vector2(48, 20)
 
-[node name="Area2D" type="Area2D" parent="UsageOverlay/Burn"]
+[node name="Area2D" type="Area2D" parent="UsageOverlay/Burn" unique_id=2091131219]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UsageOverlay/Burn/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UsageOverlay/Burn/Area2D" unique_id=1806198032]
 position = Vector2(34, 25)
 shape = SubResource("RectangleShape2D_77oty")
 
-[node name="BurnParticles" type="CPUParticles2D" parent="UsageOverlay/Burn"]
+[node name="BurnParticles" type="CPUParticles2D" parent="UsageOverlay/Burn" unique_id=1873111347]
 position = Vector2(47, 0)
 amount = 600
 lifetime = 0.5
@@ -435,7 +439,7 @@ scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_ukj3l")
 color_ramp = SubResource("Gradient_50kvq")
 
-[node name="Inspect" type="Label" parent="UsageOverlay"]
+[node name="Inspect" type="Label" parent="UsageOverlay" unique_id=371483536]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
 anchors_preset = 4
@@ -452,18 +456,18 @@ text = "INSPECT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="InspectPos" type="Marker2D" parent="UsageOverlay/Inspect"]
+[node name="InspectPos" type="Marker2D" parent="UsageOverlay/Inspect" unique_id=740331015]
 visible = false
 position = Vector2(84, 20)
 
-[node name="Area2D" type="Area2D" parent="UsageOverlay/Inspect"]
+[node name="Area2D" type="Area2D" parent="UsageOverlay/Inspect" unique_id=123803496]
 visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UsageOverlay/Inspect/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UsageOverlay/Inspect/Area2D" unique_id=121017004]
 position = Vector2(102, 25)
 shape = SubResource("RectangleShape2D_ukj3l")
 
-[node name="InspectParticles" type="CPUParticles2D" parent="UsageOverlay/Inspect"]
+[node name="InspectParticles" type="CPUParticles2D" parent="UsageOverlay/Inspect" unique_id=1175081840]
 position = Vector2(79, 0)
 amount = 500
 lifetime = 1.2

@@ -5,7 +5,7 @@ extends Control
 @onready var inspect_pos: Marker2D = $Inspect/InspectPos
 
 func _ready() -> void:
-	overlayToggle()
+	#overlayToggle()
 	SignalBus.overlayToggle.connect(overlayToggle)
 	
 	ChamberInfo.useCardDest = use_pos.global_position

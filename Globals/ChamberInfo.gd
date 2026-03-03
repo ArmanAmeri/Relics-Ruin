@@ -47,11 +47,11 @@ func setChamberInfo(chamberID: String) -> void:
 	deckCards = IL.get_item_info(chamber, "deck_cards")
 	
 	# Change Main Scene To Chamber
-	get_tree().change_scene_to_file("res://Scenes/chamber.tscn")
+	get_tree().root.get_node("Game").start_Chamber()
 
 func chamberDone() -> void:
 	# Change Chamber to Chamber Done
-	get_tree().change_scene_to_file("res://Scenes/chamber_done.tscn")
+	get_tree().root.get_node("Game").start_ChamberDone()
 
 func setDeckCount(newCount: int) -> void:
 	var oldCount = deckCount

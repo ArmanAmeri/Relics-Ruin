@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://df832msi3a5h2"]
+[gd_scene format=3 uid="uid://df832msi3a5h2"]
 
 [ext_resource type="Script" uid="uid://hmthxgvmklyr" path="res://Scripts/chamber_done.gd" id="1_wn4pc"]
 [ext_resource type="FontFile" uid="uid://c6p36x6qloj41" path="res://Resources/pixel12x10/Pixel12x10Mono-v1.1.0.ttf" id="2_ax3jm"]
 
-[node name="ChamberDone" type="Control"]
+[node name="ChamberDone" type="Control" unique_id=1523411757]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wn4pc")
 
-[node name="BackGround" type="Panel" parent="."]
+[node name="BackGround" type="Panel" parent="." unique_id=2041844405]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ChamberDoneLabel" type="Label" parent="."]
+[node name="ChamberDoneLabel" type="Label" parent="." unique_id=1644686381]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -33,7 +33,7 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 32
 text = "Chamber Done"
 
-[node name="StatisticLabel" type="RichTextLabel" parent="."]
+[node name="StatisticLabel" type="RichTextLabel" parent="." unique_id=471017306]
 custom_minimum_size = Vector2(200, 300)
 layout_mode = 1
 anchors_preset = 8
@@ -58,7 +58,7 @@ Deck Total:----------> %d"
 fit_content = true
 autowrap_mode = 0
 
-[node name="Button" type="Button" parent="."]
+[node name="Button" type="Button" parent="." unique_id=2026769812]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

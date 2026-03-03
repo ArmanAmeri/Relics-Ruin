@@ -29,4 +29,4 @@ func calculateResults() -> void:
 	GameData.debt += ChamberInfo.debt
 	
 	# Change Chamber to Main Scene
-	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+	get_tree().root.get_node("Game").start_MainMenu()
