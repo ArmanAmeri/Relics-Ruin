@@ -1,0 +1,76 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="RelicGame"
+config/version="0.1.0-Alpha"
+run/main_scene="uid://kd73xdjanpa1"
+config/features=PackedStringArray("4.5", "Mobile")
+config/icon="res://icon.svg"
+
+[autoload]
+
+DebugHud="*res://Scenes/debug_hud.tscn"
+SwipeManager="*res://Globals/swipe_manager.gd"
+SignalBus="*res://Globals/signal_bus.gd"
+IL="*res://Globals/InfoLibrary.gd"
+ChamberInfo="*res://Globals/ChamberInfo.gd"
+GameData="*res://Globals/GameData.gd"
+
+[display]
+
+window/size/viewport_width=576
+window/size/viewport_height=864
+window/size/always_on_top=true
+window/stretch/mode="viewport"
+window/handheld/orientation=1
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/AsepriteWizard/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "orange",
+"res://Globals/": "green",
+"res://Resources/": "pink",
+"res://Scenes/": "blue",
+"res://Scripts/": "red",
+"res://Shaders/": "purple"
+}
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
+[input]
+
+press={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(101, 18),"global_position":Vector2(110, 66),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_1="Cards"
+2d_physics/layer_2="DestroyArea"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"
+2d/snap/snap_2d_transforms_to_pixel=true

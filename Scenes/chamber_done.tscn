@@ -1,0 +1,77 @@
+[gd_scene load_steps=3 format=3 uid="uid://df832msi3a5h2"]
+
+[ext_resource type="Script" uid="uid://hmthxgvmklyr" path="res://Scripts/chamber_done.gd" id="1_wn4pc"]
+[ext_resource type="FontFile" uid="uid://c6p36x6qloj41" path="res://Resources/pixel12x10/Pixel12x10Mono-v1.1.0.ttf" id="2_ax3jm"]
+
+[node name="ChamberDone" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wn4pc")
+
+[node name="BackGround" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChamberDoneLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -116.5
+offset_top = 80.0
+offset_right = 116.5
+offset_bottom = 124.66669
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 32
+text = "Chamber Done"
+
+[node name="StatisticLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -232.0
+offset_right = 100.0
+offset_bottom = 68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_ax3jm")
+theme_override_font_sizes/normal_font_size = 20
+text = "Difficulty:----------> %d
+Entry Pot:-----------> %d
+Profit:--------------> %d
+Debt Increase: ------> %d
+Starting Deck Total:-> %d
+Deck Total:----------> %d"
+fit_content = true
+autowrap_mode = 0
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -45.0
+offset_top = -164.0
+offset_right = 45.0
+offset_bottom = -111.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "Done"
+
+[connection signal="pressed" from="Button" to="." method="calculateResults"]

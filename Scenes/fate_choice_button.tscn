@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvkwiaarlics7"]
+
+[ext_resource type="Script" uid="uid://dy34lkn1pggxr" path="res://Scripts/fate_choice_button.gd" id="1_sgo7b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_72y7d"]
+bg_color = Color(0.7254902, 0, 0, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="FateChoiceButton" type="Button"]
+custom_minimum_size = Vector2(100, 100)
+offset_right = 8.0
+offset_bottom = 8.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_72y7d")
+autowrap_mode = 3
+script = ExtResource("1_sgo7b")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

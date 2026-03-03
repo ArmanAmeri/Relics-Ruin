@@ -1,0 +1,161 @@
+[gd_scene load_steps=14 format=3 uid="uid://bhiakkhesd0y7"]
+
+[ext_resource type="Script" uid="uid://blat85eaxeabo" path="res://Scripts/card.gd" id="1_0qqmn"]
+[ext_resource type="Shader" uid="uid://dp8xiuf6b4b76" path="res://Shaders/discard.gdshader" id="1_brehn"]
+[ext_resource type="FontFile" uid="uid://l37qrt3vp0s0" path="res://Resources/PressStart2P.ttf" id="2_eumee"]
+[ext_resource type="Shader" uid="uid://c80aef42h64f7" path="res://Shaders/fake_3D.gdshader" id="2_wf8id"]
+[ext_resource type="Texture2D" uid="uid://dilm1w4lsbvlp" path="res://Assets/Cards/back.png" id="5_bnspj"]
+[ext_resource type="Texture2D" uid="uid://5ccmrno84syn" path="res://Assets/Cards/front.png" id="5_e6po8"]
+[ext_resource type="Theme" uid="uid://b3vs533fwqt2b" path="res://Resources/maintheme.tres" id="6_xnv4g"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_brehn"]
+noise_type = 5
+seed = 98554632
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eumee"]
+noise = SubResource("FastNoiseLite_brehn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eumee"]
+shader = ExtResource("1_brehn")
+shader_parameter/burn_pixel_size = 48
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_eumee")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.03
+shader_parameter/burn_color = Color(0.776471, 0.396078, 0, 1)
+
+[sub_resource type="Theme" id="Theme_e6po8"]
+default_font = ExtResource("2_eumee")
+default_font_size = 8
+Label/colors/font_color = Color(0.909804, 0.85098, 0.756863, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qqmn"]
+size = Vector2(127, 191)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wf8id"]
+shader = ExtResource("2_wf8id")
+shader_parameter/rect_size = Vector2(128, 192)
+shader_parameter/fov = 30.0
+shader_parameter/cull_back = true
+shader_parameter/y_rot = 0.0
+shader_parameter/x_rot = 0.0
+shader_parameter/inset = 0.0
+
+[node name="Card" type="Control"]
+material = SubResource("ShaderMaterial_eumee")
+custom_minimum_size = Vector2(128, 192)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 64.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 96)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme = SubResource("Theme_e6po8")
+script = ExtResource("1_0qqmn")
+front_texture = ExtResource("5_e6po8")
+back_texture = ExtResource("5_bnspj")
+metadata/_edit_use_anchors_ = true
+
+[node name="UseCardArea" type="Area2D" parent="."]
+visible = false
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UseCardArea"]
+position = Vector2(63.5, 95.5)
+shape = SubResource("RectangleShape2D_0qqmn")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_wf8id")
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 64.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+snap_2d_transforms_to_pixel = true
+snap_2d_vertices_to_pixel = true
+size = Vector2i(128, 192)
+render_target_update_mode = 4
+
+[node name="CardTexture" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 64.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_e6po8")
+stretch_mode = 2
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": true,
+"pending_changes": {},
+"slice_section": true
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://Assets/Cards",
+"o_name": "back",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "C:/Users/Arman/Documents/Godot/Mobile Game/AspriteAssets/card-template-128x192.aseprite",
+"source_uid": -1
+}
+metadata/_aseprite_wizard_source_file_hash_ = "87cc3c6c5a6224d5f89f6ece89661e7f"
+metadata/_edit_use_anchors_ = true
+
+[node name="Title" type="Label" parent="SubViewportContainer/SubViewport"]
+offset_left = 36.0
+offset_top = 37.0
+offset_right = 84.0
+offset_bottom = 60.0
+mouse_filter = 1
+theme = ExtResource("6_xnv4g")
+text = "Hello "
+
+[node name="Description" type="RichTextLabel" parent="SubViewportContainer/SubViewport"]
+offset_left = 15.0
+offset_top = 107.0
+offset_right = 113.0
+offset_bottom = 167.0
+mouse_filter = 1
+theme = ExtResource("6_xnv4g")
+text = "Draw 4 cards"
+scroll_active = false
+autowrap_mode = 1
+vertical_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

@@ -1,0 +1,492 @@
+[gd_scene load_steps=28 format=3 uid="uid://b3nv3gmdnrjt8"]
+
+[ext_resource type="Script" uid="uid://dmcq8wurk6tv1" path="res://Scripts/use_card_area.gd" id="1_2jd1k"]
+[ext_resource type="Script" uid="uid://bty4xp7dsb4hr" path="res://Scripts/hand.gd" id="3_mgabx"]
+[ext_resource type="Script" uid="uid://tt6qdj4t7hht" path="res://Scripts/deck.gd" id="3_prqlx"]
+[ext_resource type="Script" uid="uid://cafop2ikyotuq" path="res://Scripts/hand2.gd" id="4_iwt3f"]
+[ext_resource type="Script" uid="uid://cldxangsdrwi1" path="res://Scripts/deck2.gd" id="6_te6kr"]
+[ext_resource type="Script" uid="uid://cnwuqsy0stipk" path="res://Scripts/rarityManager.gd" id="6_ykntj"]
+[ext_resource type="Script" uid="uid://f2c5cs3wjerb" path="res://Scripts/pot.gd" id="8_ocltp"]
+[ext_resource type="Script" uid="uid://duiikla1kbg35" path="res://Scripts/burn.gd" id="9_pr37v"]
+[ext_resource type="Script" uid="uid://brhq82awohop1" path="res://Scripts/escape.gd" id="10_76m13"]
+[ext_resource type="Script" uid="uid://415rovy772eo" path="res://Scripts/fate_decision.gd" id="10_lij0d"]
+[ext_resource type="Script" uid="uid://nob1gqji2j42" path="res://Scripts/card_zoom.gd" id="11_76m13"]
+[ext_resource type="Script" uid="uid://esc4jt2rjdog" path="res://Scripts/usage_overlay.gd" id="12_cr50s"]
+[ext_resource type="FontFile" uid="uid://c6p36x6qloj41" path="res://Resources/pixel12x10/Pixel12x10Mono-v1.1.0.ttf" id="14_nbaa2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prqlx"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_te6kr"]
+_data = [Vector2(0, 0), 0.0, 3.893487, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.893, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ykntj"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 5.1302533, 0, 0, Vector2(0.5, 1.4901161e-08), 0.0, 0.0, 0, 0, Vector2(1, 1), 5.13, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_ykntj"]
+script = ExtResource("6_ykntj")
+metadata/_custom_type_script = "uid://cnwuqsy0stipk"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_te6kr"]
+size = Vector2(512, 190.00002)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cr50s"]
+bg_color = Color(0, 0, 0, 0.39215687)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhq8i"]
+size = Vector2(300, 50)
+
+[sub_resource type="Gradient" id="Gradient_nbaa2"]
+colors = PackedColorArray(1, 1, 0.62352943, 0.40392157, 1, 1, 0.62352943, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77oty"]
+size = Vector2(300, 50)
+
+[sub_resource type="Curve" id="Curve_ukj3l"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.5), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_50kvq"]
+offsets = PackedFloat32Array(0, 0.15355805, 0.5131086, 1)
+colors = PackedColorArray(1, 1, 1, 0.50980395, 1, 0.8784314, 0.4, 0.50980395, 1, 0.41568628, 0, 0.50980395, 0.54509807, 0, 0, 0.50980395)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukj3l"]
+size = Vector2(300, 50)
+
+[sub_resource type="Curve" id="Curve_77oty"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.45682454), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_ukj3l"]
+colors = PackedColorArray(1, 1, 1, 0.47058824, 1, 1, 1, 0)
+
+[node name="Chamber" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 0, 0.403922)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -259.2
+offset_right = 576.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="UseCardArea" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.2
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_prqlx")
+
+[node name="Label" type="Label" parent="UseCardArea"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -11.5
+offset_right = 50.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Destroy Area"
+
+[node name="Hand" type="Control" parent="."]
+custom_minimum_size = Vector2(512, 192)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -258.59003
+offset_right = 256.0
+offset_bottom = -66.59003
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("3_mgabx")
+hand_curve = SubResource("Curve_te6kr")
+rotation_curve = SubResource("Curve_ykntj")
+
+[node name="Hand2" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("4_iwt3f")
+
+[node name="Deck" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 288.0
+offset_top = 200.0
+offset_right = 288.0
+offset_bottom = 200.0
+mouse_filter = 2
+script = ExtResource("3_prqlx")
+rarityM = SubResource("Resource_ykntj")
+
+[node name="draw" type="Button" parent="."]
+layout_mode = 0
+offset_left = 35.0
+offset_top = 213.0
+offset_right = 83.0
+offset_bottom = 244.0
+text = "draw"
+
+[node name="Deck2" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 257.0
+offset_top = 305.0
+offset_right = 297.0
+offset_bottom = 345.0
+script = ExtResource("6_te6kr")
+
+[node name="HoldingCard" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+position = Vector2(288, 701.41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.40997314)
+shape = SubResource("RectangleShape2D_te6kr")
+disabled = true
+
+[node name="Pot" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_ocltp")
+
+[node name="Burn" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 498.0
+offset_top = 40.0
+offset_right = 538.0
+offset_bottom = 80.0
+script = ExtResource("9_pr37v")
+
+[node name="BurnCostLabel" type="Label" parent="Burn"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 42.0
+offset_right = 46.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(1, 0.5647059, 0, 1)
+text = "Cost: 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BurnLabel" type="Label" parent="Burn"]
+layout_mode = 0
+offset_left = -35.0
+offset_top = -1.0
+offset_right = 61.0
+offset_bottom = 31.0
+theme_override_fonts/font = ExtResource("14_nbaa2")
+theme_override_font_sizes/font_size = 32
+text = "BURN"
+
+[node name="FateDecision" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_lij0d")
+
+[node name="FlowContainer" type="FlowContainer" parent="FateDecision"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Escape" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 11.0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_76m13")
+
+[node name="EscapeButton" type="Button" parent="Escape"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.22900002
+anchor_bottom = 0.27600002
+offset_left = 13.0
+offset_top = 16.0
+offset_right = 127.985
+offset_bottom = 60.996
+theme_override_font_sizes/font_size = 32
+text = "ESCAPE"
+
+[node name="EscapeCostLabel" type="Label" parent="Escape"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 72.0
+offset_right = 109.0
+offset_bottom = 95.0
+theme_override_colors/font_color = Color(0.42782164, 0.7530355, 0.7701255, 1)
+text = "Cost: 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CardZoom" type="Control" parent="."]
+visible = false
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("11_76m13")
+
+[node name="Background" type="Button" parent="CardZoom"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CardPlacement" type="Panel" parent="CardZoom"]
+visible = false
+z_index = 20
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="UsageOverlay" type="Control" parent="."]
+z_index = 100
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("12_cr50s")
+
+[node name="Background" type="Panel" parent="UsageOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cr50s")
+
+[node name="Use" type="Label" parent="UsageOverlay"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -36.0
+offset_right = 36.0
+offset_bottom = 50.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("14_nbaa2")
+theme_override_font_sizes/font_size = 32
+text = "USE"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_2jd1k")
+
+[node name="UsePos" type="Marker2D" parent="UsageOverlay/Use"]
+visible = false
+position = Vector2(36, 20)
+
+[node name="Area2D" type="Area2D" parent="UsageOverlay/Use"]
+visible = false
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UsageOverlay/Use/Area2D"]
+position = Vector2(36, 25)
+shape = SubResource("RectangleShape2D_vhq8i")
+
+[node name="UseParticles" type="CPUParticles2D" parent="UsageOverlay/Use"]
+position = Vector2(34, -6)
+amount = 500
+emission_shape = 4
+emission_points = PackedVector2Array(0, 0, 0, 0)
+emission_colors = PackedColorArray(1, 1, 0.62352943, 0.50980395, 0, 1, 0.62352943, 0.50980395)
+direction = Vector2(0, 1)
+spread = 80.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+angular_velocity_min = 100.0
+angular_velocity_max = 100.0
+angle_min = 100.0
+angle_max = 100.0
+scale_amount_max = 10.0
+color_ramp = SubResource("Gradient_nbaa2")
+
+[node name="Burn" type="Label" parent="UsageOverlay"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -48.0
+offset_right = 96.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = 1.5707964
+theme_override_fonts/font = ExtResource("14_nbaa2")
+theme_override_font_sizes/font_size = 32
+text = "BURN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BurnPos" type="Marker2D" parent="UsageOverlay/Burn"]
+visible = false
+position = Vector2(48, 20)
+
+[node name="Area2D" type="Area2D" parent="UsageOverlay/Burn"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UsageOverlay/Burn/Area2D"]
+position = Vector2(34, 25)
+shape = SubResource("RectangleShape2D_77oty")
+
+[node name="BurnParticles" type="CPUParticles2D" parent="UsageOverlay/Burn"]
+position = Vector2(47, 0)
+amount = 600
+lifetime = 0.5
+speed_scale = 1.5
+emission_shape = 3
+emission_rect_extents = Vector2(150, 1)
+direction = Vector2(0, 1)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+angular_velocity_min = 400.0
+angular_velocity_max = 1000.0
+radial_accel_min = -150.0
+radial_accel_max = -100.0
+scale_amount_max = 10.0
+scale_amount_curve = SubResource("Curve_ukj3l")
+color_ramp = SubResource("Gradient_50kvq")
+
+[node name="Inspect" type="Label" parent="UsageOverlay"]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 84.0
+offset_right = 168.0
+offset_bottom = 134.0
+grow_vertical = 2
+rotation = -1.5707964
+theme_override_fonts/font = ExtResource("14_nbaa2")
+theme_override_font_sizes/font_size = 32
+text = "INSPECT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InspectPos" type="Marker2D" parent="UsageOverlay/Inspect"]
+visible = false
+position = Vector2(84, 20)
+
+[node name="Area2D" type="Area2D" parent="UsageOverlay/Inspect"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UsageOverlay/Inspect/Area2D"]
+position = Vector2(102, 25)
+shape = SubResource("RectangleShape2D_ukj3l")
+
+[node name="InspectParticles" type="CPUParticles2D" parent="UsageOverlay/Inspect"]
+position = Vector2(79, 0)
+amount = 500
+lifetime = 1.2
+speed_scale = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(150, 1)
+direction = Vector2(0, 1)
+spread = 30.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 170.0
+angular_velocity_min = 100.0
+angular_velocity_max = 300.0
+radial_accel_min = -100.0
+radial_accel_max = -40.0
+scale_amount_min = 0.5
+scale_amount_max = 6.0
+scale_amount_curve = SubResource("Curve_77oty")
+color_ramp = SubResource("Gradient_ukj3l")
+
+[connection signal="pressed" from="draw" to="Deck" method="_on_draw_pressed"]
+[connection signal="pressed" from="Escape/EscapeButton" to="Escape" method="escape"]
+[connection signal="pressed" from="CardZoom/Background" to="CardZoom" method="_on_background_pressed"]
+[connection signal="area_entered" from="UsageOverlay/Use/Area2D" to="UsageOverlay/Use" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="UsageOverlay/Burn/Area2D" to="Burn" method="burnCard"]
+[connection signal="area_entered" from="UsageOverlay/Inspect/Area2D" to="CardZoom" method="_on_area_2d_area_entered"]

@@ -1,0 +1,251 @@
+[gd_scene load_steps=17 format=3 uid="uid://b3nv3gmdnrjt8"]
+
+[ext_resource type="Script" uid="uid://dmcq8wurk6tv1" path="res://Scripts/use_card_area.gd" id="1_2jd1k"]
+[ext_resource type="Script" uid="uid://fs688b0dvb5d" path="res://Scripts/chamber.gd" id="1_prqlx"]
+[ext_resource type="Script" uid="uid://bty4xp7dsb4hr" path="res://Scripts/hand.gd" id="3_mgabx"]
+[ext_resource type="Script" uid="uid://tt6qdj4t7hht" path="res://Scripts/deck.gd" id="3_prqlx"]
+[ext_resource type="Script" uid="uid://cafop2ikyotuq" path="res://Scripts/hand2.gd" id="4_iwt3f"]
+[ext_resource type="Script" uid="uid://cldxangsdrwi1" path="res://Scripts/deck2.gd" id="6_te6kr"]
+[ext_resource type="Script" uid="uid://cnwuqsy0stipk" path="res://Scripts/rarityManager.gd" id="6_ykntj"]
+[ext_resource type="Script" uid="uid://f2c5cs3wjerb" path="res://Scripts/pot.gd" id="8_ocltp"]
+[ext_resource type="Script" uid="uid://duiikla1kbg35" path="res://Scripts/burn.gd" id="9_pr37v"]
+[ext_resource type="Script" uid="uid://415rovy772eo" path="res://Scripts/fate_decision.gd" id="10_lij0d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prqlx"]
+bg_color = Color(0.6, 0, 0, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhq8i"]
+size = Vector2(578, 302)
+
+[sub_resource type="Curve" id="Curve_te6kr"]
+_data = [Vector2(0, 0), 0.0, 3.893487, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.893, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ykntj"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 5.1302533, 0, 0, Vector2(0.5, 1.4901161e-08), 0.0, 0.0, 0, 0, Vector2(1, 1), 5.13, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Resource" id="Resource_ykntj"]
+script = ExtResource("6_ykntj")
+metadata/_custom_type_script = "uid://cnwuqsy0stipk"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_te6kr"]
+size = Vector2(512, 190.00002)
+
+[node name="Chamber" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_prqlx")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(1, 1, 0, 0.403922)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -259.2
+offset_right = 576.0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="UseCardArea" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.35
+grow_horizontal = 2
+mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_prqlx")
+script = ExtResource("1_2jd1k")
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="UseCardArea"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -11.5
+offset_right = 50.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Destroy Area"
+
+[node name="Area2D" type="Area2D" parent="UseCardArea"]
+visible = false
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UseCardArea/Area2D"]
+position = Vector2(288, 151)
+shape = SubResource("RectangleShape2D_vhq8i")
+
+[node name="Hand" type="Control" parent="."]
+custom_minimum_size = Vector2(512, 192)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -258.59003
+offset_right = 256.0
+offset_bottom = -66.59003
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+script = ExtResource("3_mgabx")
+hand_curve = SubResource("Curve_te6kr")
+rotation_curve = SubResource("Curve_ykntj")
+
+[node name="Hand2" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchor_top = 0.7
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("4_iwt3f")
+
+[node name="Deck" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 288.0
+offset_top = 200.0
+offset_right = 288.0
+offset_bottom = 200.0
+mouse_filter = 2
+script = ExtResource("3_prqlx")
+rarityM = SubResource("Resource_ykntj")
+
+[node name="draw" type="Button" parent="Deck"]
+layout_mode = 0
+offset_left = -253.0
+offset_top = 13.0
+offset_right = -205.0
+offset_bottom = 44.0
+text = "draw"
+
+[node name="discard" type="Button" parent="Deck"]
+layout_mode = 0
+offset_left = -255.0
+offset_top = 55.0
+offset_right = -190.0
+offset_bottom = 86.0
+text = "discard"
+
+[node name="Deck2" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 257.0
+offset_top = 305.0
+offset_right = 297.0
+offset_bottom = 345.0
+script = ExtResource("6_te6kr")
+
+[node name="HoldingCard" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+position = Vector2(288, 701.41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -0.40997314)
+shape = SubResource("RectangleShape2D_te6kr")
+disabled = true
+
+[node name="Pot" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -23.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_ocltp")
+
+[node name="Burn" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 498.0
+offset_top = 40.0
+offset_right = 538.0
+offset_bottom = 80.0
+script = ExtResource("9_pr37v")
+
+[node name="BurnLabel" type="Label" parent="Burn"]
+layout_mode = 0
+offset_left = -34.0
+offset_top = 2.0
+offset_right = 57.0
+offset_bottom = 46.666668
+theme_override_font_sizes/font_size = 32
+text = "BURN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BurnCostLabel" type="Label" parent="Burn"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 42.0
+offset_right = 46.0
+offset_bottom = 65.0
+theme_override_colors/font_color = Color(1, 0.5647059, 0, 1)
+text = "Cost: 100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BurnButton" type="Button" parent="Burn"]
+layout_mode = 0
+offset_left = -27.0
+offset_top = -27.0
+offset_right = 49.0
+offset_bottom = 8.0
+
+[node name="FateDecision" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_lij0d")
+
+[node name="FlowContainer" type="FlowContainer" parent="FateDecision"]
+custom_minimum_size = Vector2(500, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="area_entered" from="UseCardArea/Area2D" to="UseCardArea" method="_on_area_2d_area_entered"]
+[connection signal="pressed" from="Deck/draw" to="Deck" method="_on_draw_pressed"]
+[connection signal="pressed" from="Deck/discard" to="Deck" method="_on_discard_pressed"]
+[connection signal="pressed" from="Burn/BurnButton" to="Burn" method="burnCard"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=4 uid="uid://bhiakkhesd0y7"]
+
+[ext_resource type="Script" uid="uid://blat85eaxeabo" path="res://Scripts/card.gd" id="1_0qqmn"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_gmcdd"]
+_data = PackedByteArray("AAADAAUAAAABAAAAgAAAAMAAAACYAQAAUklGRpABAABXRUJQVlA4TIMBAAAvf8AvEEegGJIkNrnPvYQQLU7iFEWS1EbvmyPJAQKwgoI2kpQzwHfP7F/eG5j/AIA4O91Yd/+/e8VeAkRpD+DW1t62gXOd3SsOkGqHHxvwFwZwLCMPNtDgDML7+TuUjug/I7dtw9AHAe224x4RQnZdCOHN10nTpI6rc1N1XT5sKo7TWrJGT0kbMiqsuj7le4+j0jJyVxukCVWOpVQ5hmIgvBgILkdCy5HAGpBksjgyIFGyyaBGQjayGGj//vtLZcvmg/hQy+pBJLGsmg/gIy4su68HkJaLh8WCn1dzpNztmp83QYrdvj6v+HkTotiH543hvAlR6mKxWVnOmwDFrzys1XDeBijUuk6I7LS+nNVpOXepitNUu0RGThPx/+94+X6vjT7UaZMdorgs7XTqsv/lZZftpE7bYSROG/W57VfzkcEGlhRsboAaBaw2QL04BavmHOopcVtzsCwYKwzGSkOh4lCoPBCpIUzMjkuNSj1plDdR18lhkMpTlBBuxHWHIQRfIQAA")
+size_override = Vector2(128, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0qqmn"]
+size = Vector2(127, 191)
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(128, 192)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 128.0
+offset_bottom = 192.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_0qqmn")
+angle_x_max = null
+angle_y_max = null
+max_offset_shadow = null
+spring = null
+damp = null
+velocity_multiplier = null
+
+[node name="CardTexture" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+offset_right = 128.0
+offset_bottom = 192.0
+texture = SubResource("PortableCompressedTexture2D_gmcdd")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": true,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"slice": "",
+"source": "C:/Users/Arman/Documents/Godot/Mobile Game/AspriteAssets/card-template-128x192.aseprite",
+"source_uid": -1
+}
+metadata/_aseprite_wizard_source_file_hash_ = "31de5467e0a1a32c7f213189fc24e0cc"
+
+[node name="Title" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Description" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CardType" type="RichTextLabel" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="DestroyArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyArea"]
+position = Vector2(63.5, 95.5)
+shape = SubResource("RectangleShape2D_0qqmn")

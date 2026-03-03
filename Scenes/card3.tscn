@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://oj8qulyrlic7"]
+
+[ext_resource type="Script" uid="uid://blsqp1n5w11eu" path="res://Scripts/card3.gd" id="1_vv746"]
+[ext_resource type="Texture2D" uid="uid://5ccmrno84syn" path="res://Assets/Cards/front.png" id="2_rrq4b"]
+[ext_resource type="Theme" uid="uid://b3vs533fwqt2b" path="res://Resources/maintheme.tres" id="3_4po8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brehn"]
+size = Vector2(124, 188)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eumee"]
+size = Vector2(128, 192)
+
+[node name="Card" type="RigidBody2D"]
+collision_mask = 0
+gravity_scale = 0.0
+linear_damp = 1.0
+angular_damp = 1.0
+script = ExtResource("1_vv746")
+
+[node name="cardImage" type="Sprite2D" parent="."]
+texture = ExtResource("2_rrq4b")
+
+[node name="Text" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = 11.0
+offset_right = 49.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("3_4po8p")
+bbcode_enabled = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_brehn")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_eumee")

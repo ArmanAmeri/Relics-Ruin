@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm8p4p2es6a5u"]
+
+[ext_resource type="Script" uid="uid://c0y65f7x72ilq" path="res://Scripts/fps_label.gd" id="1_v5w1d"]
+[ext_resource type="Script" uid="uid://bqsfffi10kbr" path="res://Scripts/swipe_dir_label.gd" id="2_u5avy"]
+[ext_resource type="Script" uid="uid://mb40emhsaef8" path="res://Scripts/mouse_pencil.gd" id="3_m8vpy"]
+[ext_resource type="Script" uid="uid://br55bndujw2y1" path="res://Scripts/mouse_speed_label.gd" id="4_21pg8"]
+
+[node name="DebugHUD" type="CanvasLayer"]
+
+[node name="FPSLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_v5w1d")
+enable = true
+
+[node name="SwipeDirLabel" type="Label" parent="."]
+offset_left = 208.0
+offset_top = 22.0
+offset_right = 365.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 64
+script = ExtResource("2_u5avy")
+enable = true
+
+[node name="MousePencil" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_m8vpy")
+enable = true
+
+[node name="MouseSpeedLabel" type="Label" parent="."]
+offset_top = 19.0
+offset_right = 40.0
+offset_bottom = 42.0
+script = ExtResource("4_21pg8")
+enable = true

@@ -1,0 +1,114 @@
+[gd_scene load_steps=11 format=3 uid="uid://d24dn1cdkdas8"]
+
+[ext_resource type="Script" uid="uid://cbrqyrmlcorbk" path="res://Scripts/card.gd" id="1_0qqmn"]
+[ext_resource type="Shader" uid="uid://dp8xiuf6b4b76" path="res://Shaders/discard.gdshader" id="2_eumee"]
+[ext_resource type="FontFile" uid="uid://2gi3cn1celf" path="res://Resources/BoldPixels.ttf" id="4_bnspj"]
+[ext_resource type="Script" uid="uid://d0efh1gsw38hr" path="res://Scripts/card_desc_label.gd" id="5_bnspj"]
+[ext_resource type="Texture2D" uid="uid://5ccmrno84syn" path="res://Assets/Cards/front.png" id="5_e6po8"]
+[ext_resource type="Theme" uid="uid://b3vs533fwqt2b" path="res://Resources/maintheme.tres" id="6_xnv4g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_brehn"]
+size = Vector2(127, 191)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_brehn"]
+noise_type = 5
+seed = 98554632
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eumee"]
+noise = SubResource("FastNoiseLite_brehn")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e6po8"]
+resource_local_to_scene = true
+shader = ExtResource("2_eumee")
+shader_parameter/burn_pixel_size = 48
+shader_parameter/dissolve_texture = SubResource("NoiseTexture2D_eumee")
+shader_parameter/dissolve_value = 1.0
+shader_parameter/burn_size = 0.02999999932944
+shader_parameter/burn_color = Color(0.7764706, 0.39607844, 0, 1)
+
+[node name="Card" type="Control"]
+custom_minimum_size = Vector2(128, 192)
+layout_mode = 3
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 64.0
+offset_bottom = 96.0
+scale = Vector2(1.4, 1.4)
+pivot_offset = Vector2(64, 96)
+mouse_default_cursor_shape = 2
+script = ExtResource("1_0qqmn")
+metadata/_edit_vertical_guides_ = [-56.0]
+
+[node name="UseCardArea" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UseCardArea"]
+position = Vector2(64, 96)
+shape = SubResource("RectangleShape2D_brehn")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_e6po8")
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 192.0
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+disable_3d = true
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(128, 192)
+render_target_update_mode = 4
+
+[node name="CardTexture" type="TextureRect" parent="SubViewportContainer/SubViewport"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -96.0
+offset_right = 64.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(64, 96)
+texture = ExtResource("5_e6po8")
+
+[node name="Title" type="Label" parent="SubViewportContainer/SubViewport/CardTexture"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 19.0
+offset_right = 116.0
+offset_bottom = 42.0
+theme_override_fonts/font = ExtResource("4_bnspj")
+theme_override_font_sizes/font_size = 32
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="label" type="RichTextLabel" parent="SubViewportContainer/SubViewport/CardTexture"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = 11.0
+offset_right = 49.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("6_xnv4g")
+bbcode_enabled = true
+scroll_active = false
+autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_bnspj")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
