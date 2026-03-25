@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://nob1gqji2j42" path="res://Scripts/card_zoom.gd" id="11_76m13"]
 [ext_resource type="Script" uid="uid://esc4jt2rjdog" path="res://Scripts/usage_overlay.gd" id="12_cr50s"]
 [ext_resource type="FontFile" uid="uid://c6p36x6qloj41" path="res://Resources/pixel12x10/Pixel12x10Mono-v1.1.0.ttf" id="14_nbaa2"]
+[ext_resource type="PackedScene" uid="uid://dq8f8v2dfxlgw" path="res://Scenes/pull_zone.tscn" id="15_50kvq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_prqlx"]
 bg_color = Color(0.6, 0, 0, 1)
@@ -110,7 +111,7 @@ grow_vertical = 2
 text = "Destroy Area"
 
 [node name="Hand" type="Control" parent="." unique_id=1120043384]
-custom_minimum_size = Vector2(512, 192)
+custom_minimum_size = Vector2(480, 240)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -388,6 +389,9 @@ angle_max = 100.0
 scale_amount_max = 10.0
 color_ramp = SubResource("Gradient_nbaa2")
 
+[node name="PullZone" parent="UsageOverlay/Use" unique_id=235828628 instance=ExtResource("15_50kvq")]
+position = Vector2(34, 0)
+
 [node name="Burn" type="Label" parent="UsageOverlay" unique_id=426319891]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
@@ -439,6 +443,9 @@ scale_amount_max = 10.0
 scale_amount_curve = SubResource("Curve_ukj3l")
 color_ramp = SubResource("Gradient_50kvq")
 
+[node name="PullZone" parent="UsageOverlay/Burn" unique_id=66751113 instance=ExtResource("15_50kvq")]
+position = Vector2(48, -5.2453663e-07)
+
 [node name="Inspect" type="Label" parent="UsageOverlay" unique_id=371483536]
 custom_minimum_size = Vector2(50, 50)
 layout_mode = 1
@@ -487,6 +494,9 @@ scale_amount_min = 0.5
 scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_77oty")
 color_ramp = SubResource("Gradient_ukj3l")
+
+[node name="PullZone" parent="UsageOverlay/Inspect" unique_id=620680974 instance=ExtResource("15_50kvq")]
+position = Vector2(79, 3.4531997e-06)
 
 [connection signal="pressed" from="draw" to="Deck" method="_on_draw_pressed"]
 [connection signal="pressed" from="Escape/EscapeButton" to="Escape" method="escape"]

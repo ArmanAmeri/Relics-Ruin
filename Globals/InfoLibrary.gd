@@ -7,7 +7,46 @@ enum rarity {COMMON = 700, UNCOMMON = 200, RARE = 80, EPIC = 15, LEGENDARY = 5}
 enum cardType {TREASURE, TRAP, CURSE, FATE, WAGER}
 enum target {POT, DEBT, DECKCOUNT, HANDCAPACITY, ESCAPECOST, BURNCOST}
 
+const image = preload("res://Assets/Cards/card_v4.png")
+
 const Library:  Dictionary = {
+	
+	# // RARITY COLORS //
+	"common": {
+		"ID": "common",
+		"item_type": "rarityColor",
+		"rarity": rarity.COMMON,
+		"color": "#B9F18C"
+	},
+	
+	"uncommon": {
+		"ID": "uncommon",
+		"item_type": "rarityColor",
+		"rarity": rarity.UNCOMMON,
+		"color": "#57B8FF"
+	},
+	
+	"rare": {
+		"ID": "rare",
+		"item_type": "rarityColor",
+		"rarity": rarity.RARE,
+		"color": "#D33F49"
+	},
+	
+	"epic": {
+		"ID": "epic",
+		"item_type": "rarityColor",
+		"rarity": rarity.EPIC,
+		"color": "#392F5A"
+	},
+	
+	"legendary": {
+		"ID": "legendary",
+		"item_type": "rarityColor",
+		"rarity": rarity.LEGENDARY,
+		"color": "#FFC300"
+	},
+	
 	
 	#  //CARDS//
 	
@@ -17,7 +56,7 @@ const Library:  Dictionary = {
 	"loose_change": {
 		"ID": "loose_change",
 		"title": "Loose Change",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"action": actions.ADD,
 		"value": 5,
 		"target": target.POT,
@@ -30,7 +69,7 @@ const Library:  Dictionary = {
 	"coin_pouch": {
 		"ID": "coin_pouch",
 		"title": "Coin Pouch",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"action": actions.ADD,
 		"value": 25,
 		"target": target.POT,
@@ -43,7 +82,7 @@ const Library:  Dictionary = {
 	"treasure_chest": {
 		"ID": "treasure_chest",
 		"title": "Treasure Chest",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"action": actions.MULTIPLY,
 		"value": 2,
 		"target": target.POT,
@@ -59,7 +98,7 @@ const Library:  Dictionary = {
 	"nibbler": {
 		"ID": "nibbler",
 		"title": "Nibbler",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"action": actions.SUBTRACT,
 		"value": 10,
 		"target": target.POT,
@@ -72,7 +111,7 @@ const Library:  Dictionary = {
 	"wallet_mimic": {
 		"ID": "wallet_mimic",
 		"title": "Wallet Mimic",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"action": actions.SUBTRACT,
 		"value": 50,
 		"target": target.POT,
@@ -85,7 +124,7 @@ const Library:  Dictionary = {
 	"leaking_oil_barrel": {
 		"ID": "leaking_oil_barrel",
 		"title": "Leaking Oil Barrel",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"action": actions.ADD,
 		"value": 50,
 		"target": target.BURNCOST,
@@ -100,7 +139,7 @@ const Library:  Dictionary = {
 	"coin_flip": {
 		"ID": "coin_flip",
 		"title": "Coin Flip",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"wager_options": {
 			1: {
 				"chance": 50,
@@ -125,7 +164,7 @@ const Library:  Dictionary = {
 	"double_or_nothing": {
 		"ID": "double_or_nothing",
 		"title": "Double or Nothing",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"wager_options": {
 			1: {
 				"chance": 50,
@@ -150,7 +189,7 @@ const Library:  Dictionary = {
 	"loaded_dice": {
 		"ID": "loaded_dice",
 		"title": "Loaded Dice",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"wager_options": {
 			1: {
 				"chance": 70,
@@ -178,7 +217,7 @@ const Library:  Dictionary = {
 	"dead_coin": {
 		"ID": "dead_coin",
 		"title": "Dead Coin",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"curse_options": {
 			1: {
 				"action": actions.MULTIPLY,
@@ -202,7 +241,7 @@ const Library:  Dictionary = {
 	"protein_shake": {
 		"ID": "protein_shake",
 		"title": "Protein Shake",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"curse_options": {
 			1: {
 				"action": actions.ADD,
@@ -225,7 +264,7 @@ const Library:  Dictionary = {
 	"bloody_money": {
 		"ID": "bloody_money",
 		"title": "Bloody Money",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"curse_options": {
 			1: {
 				"action": actions.ADD,
@@ -251,7 +290,7 @@ const Library:  Dictionary = {
 	"forked_path": {
 		"ID": "forked_path",
 		"title": "Forked Path",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"fate_options": {
 			1: {
 				"id": 1,
@@ -276,7 +315,7 @@ const Library:  Dictionary = {
 	"omens_eye": {
 		"ID": "omens_eye",
 		"title": "Omen’s Eye",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"fate_options": {
 			1: {
 				"id": 1,
@@ -301,7 +340,7 @@ const Library:  Dictionary = {
 	"final_choice": {
 		"ID": "final_choice",
 		"title": "Final Choice",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"fate_options": {
 			1: {
 				"id": 1,
@@ -326,7 +365,7 @@ const Library:  Dictionary = {
 	"golden_pedestal": {
 		"ID": "golden_pedestal",
 		"title": "Golden Pedestal",
-		"texture": preload("res://Assets/Cards/front.png"),
+		"texture": image,
 		"fate_options": {
 			1: {
 				"id": 1,
@@ -416,3 +455,13 @@ func get_item_info(item_name: String, info: String):
 	
 	print("Item Not Found: ", item_name, " | Item Info: ", info)
 	return null
+
+
+func get_rarity_id(rarity_value: int) -> String:
+	match rarity_value:
+		rarity.COMMON: return "common"
+		rarity.UNCOMMON: return "uncommon"
+		rarity.RARE: return "rare"
+		rarity.EPIC: return "epic"
+		rarity.LEGENDARY: return "legendary"
+		_: return "common"

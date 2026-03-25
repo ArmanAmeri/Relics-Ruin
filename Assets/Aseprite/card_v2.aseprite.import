@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://cpsfvuldqt34a"
+path="res://.godot/imported/card_v2.aseprite-f8b6dc31d074bc3a99df9cca79cb12e6.res"
+
+[deps]
+
+source_file="res://Assets/Aseprite/card_v2.aseprite"
+dest_files=["res://.godot/imported/card_v2.aseprite-f8b6dc31d074bc3a99df9cca79cb12e6.res"]
+
+[params]
+

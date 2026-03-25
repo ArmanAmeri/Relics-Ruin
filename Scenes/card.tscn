@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" uid="uid://cbrqyrmlcorbk" path="res://Scripts/card.gd" id="1_0qqmn"]
 [ext_resource type="Shader" uid="uid://dp8xiuf6b4b76" path="res://Shaders/discard.gdshader" id="2_eumee"]
+[ext_resource type="Texture2D" uid="uid://c0p3k2g6w7cv7" path="res://Assets/Cards/card_v4.png" id="3_bnspj"]
 [ext_resource type="FontFile" uid="uid://2gi3cn1celf" path="res://Resources/BoldPixels.ttf" id="4_bnspj"]
 [ext_resource type="Script" uid="uid://d0efh1gsw38hr" path="res://Scripts/card_desc_label.gd" id="5_bnspj"]
-[ext_resource type="Texture2D" uid="uid://5ccmrno84syn" path="res://Assets/Cards/front.png" id="5_e6po8"]
 [ext_resource type="Theme" uid="uid://b3vs533fwqt2b" path="res://Resources/maintheme.tres" id="6_xnv4g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_brehn"]
-size = Vector2(127, 191)
+size = Vector2(192, 240)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_brehn"]
 noise_type = 5
@@ -27,65 +27,108 @@ shader_parameter/dissolve_value = 1.0
 shader_parameter/burn_size = 0.02999999932944
 shader_parameter/burn_color = Color(0.7764706, 0.39607844, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bnspj"]
+bg_color = Color(0, 0, 0, 0.47058824)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
 [node name="Card" type="Control" unique_id=722032154]
-custom_minimum_size = Vector2(128, 192)
+custom_minimum_size = Vector2(192, 240)
 layout_mode = 3
 anchors_preset = 0
-offset_left = -64.0
-offset_top = -96.0
-offset_right = 64.0
-offset_bottom = 96.0
-scale = Vector2(1.4, 1.4)
-pivot_offset = Vector2(64, 96)
+offset_left = -96.0
+offset_top = -120.0
+offset_right = 96.0
+offset_bottom = 120.0
+pivot_offset = Vector2(96, 120)
 mouse_default_cursor_shape = 2
 script = ExtResource("1_0qqmn")
 metadata/_edit_vertical_guides_ = [-56.0]
 
 [node name="UseCardArea" type="Area2D" parent="." unique_id=2021538158]
+visible = false
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UseCardArea" unique_id=538637593]
-position = Vector2(64, 96)
+position = Vector2(96, 120)
 shape = SubResource("RectangleShape2D_brehn")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=61442000]
 material = SubResource("ShaderMaterial_e6po8")
 layout_mode = 0
-offset_right = 128.0
-offset_bottom = 192.0
+offset_right = 192.0
+offset_bottom = 240.0
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" unique_id=2125622518]
 disable_3d = true
-transparent_bg = true
 handle_input_locally = false
 snap_2d_transforms_to_pixel = true
 canvas_item_default_texture_filter = 0
-size = Vector2i(128, 192)
+size = Vector2i(192, 240)
 render_target_update_mode = 4
 
+[node name="CardBackground" type="ColorRect" parent="SubViewportContainer/SubViewport" unique_id=1823155952]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.827451, 0.24705882, 0.28627452, 1)
+
 [node name="CardTexture" type="TextureRect" parent="SubViewportContainer/SubViewport" unique_id=277390911]
+texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -64.0
-offset_top = -96.0
-offset_right = 64.0
-offset_bottom = 96.0
+offset_left = -96.0
+offset_top = -120.0
+offset_right = 96.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(64, 96)
-texture = ExtResource("5_e6po8")
+texture = ExtResource("3_bnspj")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": true,
+"output_section": true,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"embed_tex": false,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "res://Assets/Cards",
+"o_name": "card_v4",
+"only_visible": true,
+"player": "",
+"slice": "",
+"source": "res://Assets/Aseprite/card_v4.aseprite",
+"source_uid": 2680834712679757706
+}
+metadata/_aseprite_wizard_source_file_hash_ = "deb19e239f21478a5c756a332905e231"
 
 [node name="Title" type="Label" parent="SubViewportContainer/SubViewport/CardTexture" unique_id=1613901924]
 layout_mode = 0
-offset_left = 11.0
-offset_top = 19.0
-offset_right = 116.0
-offset_bottom = 42.0
+offset_left = 8.999998
+offset_top = 9.14167
+offset_right = 182.0
+offset_bottom = 37.0
+theme_override_colors/font_color = Color(1, 1, 0.9254902, 1)
+theme_override_constants/line_spacing = -4
 theme_override_fonts/font = ExtResource("4_bnspj")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_bnspj")
+text = "This is a card"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
@@ -97,10 +140,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -49.0
-offset_top = 11.0
-offset_right = 49.0
-offset_bottom = 71.0
+offset_left = -79.0
+offset_top = 15.0
+offset_right = 78.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

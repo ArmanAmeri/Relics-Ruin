@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://kd73xdjanpa1"]
 
 [ext_resource type="Script" uid="uid://cp7f4r1rkxtae" path="res://Scripts/main_menu.gd" id="1_tt5f1"]
+[ext_resource type="Texture2D" uid="uid://byb73ve0occsn" path="res://Assets/vault_icon_64.png" id="2_853f1"]
+[ext_resource type="FontFile" uid="uid://2gi3cn1celf" path="res://Resources/BoldPixels.ttf" id="3_8saeu"]
+[ext_resource type="Texture2D" uid="uid://3a07n7qhlw8m" path="res://Assets/home_icon_150x.png" id="3_ghw46"]
 
 [node name="MainMenu" type="Control" unique_id=1686308089]
 layout_mode = 3
@@ -43,30 +46,47 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 alignment = 2
 
-[node name="PlayButton" type="Button" parent="MainLayout" unique_id=16328444]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "Enter The Chamber"
-
 [node name="BottomTabs" type="TabContainer" parent="MainLayout" unique_id=1502909985]
 layout_mode = 2
 tab_alignment = 1
 current_tab = 1
 tabs_position = 1
+tab_0/icon = ExtResource("2_853f1")
+tab_1/icon = ExtResource("3_ghw46")
 
-[node name="VaultTab" type="Control" parent="MainLayout/BottomTabs" unique_id=2032161595]
+[node name="VaultTab" type="TabBar" parent="MainLayout/BottomTabs" unique_id=663830671]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
+metadata/_tab_name = ""
 
-[node name="MainTab" type="Control" parent="MainLayout/BottomTabs" unique_id=1407756827]
+[node name="MainTab" type="TabBar" parent="MainLayout/BottomTabs" unique_id=1076434749]
 layout_mode = 2
 metadata/_tab_index = 1
+metadata/_tab_name = ""
 
-[node name="RelicShopTab" type="Control" parent="MainLayout/BottomTabs" unique_id=612238691]
+[node name="PlayButton" type="Button" parent="MainLayout/BottomTabs/MainTab" unique_id=16328444]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -200.0
+offset_right = 200.0
+offset_bottom = -140.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_8saeu")
+theme_override_font_sizes/font_size = 48
+text = "Enter The Chamber"
+
+[node name="RelicShopTab" type="TabBar" parent="MainLayout/BottomTabs" unique_id=265939600]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 2
 
-[connection signal="pressed" from="MainLayout/PlayButton" to="." method="enterChamber"]
+[connection signal="pressed" from="MainLayout/BottomTabs/MainTab/PlayButton" to="." method="enterChamber"]

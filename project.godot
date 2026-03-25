@@ -72,6 +72,8 @@ pointing/emulate_touch_from_mouse=true
 
 2d_physics/layer_1="Cards"
 2d_physics/layer_2="DestroyArea"
+2d_physics/layer_3="CMT"
+2d_physics/layer_4="PullZone"
 
 [rendering]
 

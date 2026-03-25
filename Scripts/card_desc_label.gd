@@ -2,9 +2,9 @@ extends RichTextLabel
 
 @onready var card: Card = $"../../../.."
 
-@export var min_font_size: int = 16
-@export var max_font_size: int = 24
-@export var padding: int = 10
+@export var min_font_size: int = 18
+@export var max_font_size: int = 32
+@export var padding: int = 5
 
 func _ready():
 	card.DescTextChanged.connect(auto_scale_font)
